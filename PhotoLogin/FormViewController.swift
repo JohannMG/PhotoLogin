@@ -24,6 +24,7 @@ class FormViewController: UIViewController {
 
         // Setup Scroll view
         view.addSubview(scrollView)
+        scrollView.keyboardDismissMode = .interactive
         
         // Imageview will have more to it soon
         addAvatar.backgroundColor = .lightGray
@@ -31,6 +32,7 @@ class FormViewController: UIViewController {
         
         // Then setup items that go into the scrollview
         [firstNameField, emailAddressField, passwordField, websiteField].forEach { field in
+            field.delegate = self
             field.layer.borderColor = CGColor(gray: 0.0, alpha: 1.0)
             field.layer.borderWidth = 1.0
             field.layer.cornerRadius = Constants.UI.cornerRadius
@@ -67,4 +69,15 @@ class FormViewController: UIViewController {
         scrollView.contentSize = CGSize(width: self.view.bounds.width, height: websiteField.frame.maxY + paddingY)
     }
 
+}
+
+extension FormViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+    }
 }
