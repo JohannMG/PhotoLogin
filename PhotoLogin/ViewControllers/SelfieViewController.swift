@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol SelfieViewDelegate : AnyObject {
     func didTakeImage(_ image: UIImage) 
@@ -16,6 +17,8 @@ class SelfieViewController: UIViewController {
     
     private let selfieView = UIView()
     private let buttonSnap = UIControl()
+    private lazy var selfieCaptureSession = { SelfieCaptureSession() }()
+    private var captureLayer: AVCaptureVideoPreviewLayer?
     
     let buttonSize = CGSize(width: 100, height: 100)
     
@@ -36,6 +39,11 @@ class SelfieViewController: UIViewController {
         buttonSnap.layer.cornerRadius = buttonSize.width / 2.0
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        selfieCaptureSession.delegate = self
+        selfieCaptureSession.setup()
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -53,4 +61,21 @@ class SelfieViewController: UIViewController {
         print("Click")
     }
 
+}
+
+extension SelfieViewController: SelfieCaptureDelegate {
+    func sessionReadyForLayer() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            if self.captureLayer != nil { return } // already in layer
+            
+            guard let captureSession = self.selfieCaptureSession.captureSession else { return }
+            
+            self.captureLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            self.selfieView.layer.addSublayer(self.captureLayer!)
+            self.captureLayer!.frame = self.selfieView.layer.frame
+            
+        }
+    }
 }
