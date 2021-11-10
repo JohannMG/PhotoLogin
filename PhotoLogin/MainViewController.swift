@@ -11,13 +11,17 @@ class MainViewController: UIViewController {
     
     let titleLabel = UILabel()
     let subheadingLabel = UILabel()
-    let scrollView = UIScrollView()
     let filledButton = UIButton(type: .system)
     
-    var keyboardOffset: CGFloat = 0.0
-
+    let formViewController = FormViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addChild(formViewController)
+        view.addSubview(formViewController.view)
+        formViewController.didMove(toParent: self)
+        formViewController.view.backgroundColor = .gray
         
         view.backgroundColor = .white
         
@@ -26,18 +30,16 @@ class MainViewController: UIViewController {
         view.addSubview(titleLabel)
 
         
-        subheadingLabel.text = "User the form below to submit your portfolio. \nAn email and passwrod are required."
+        subheadingLabel.text = "User the form below to submit your portfolio. \nAn email and password are required."
         subheadingLabel.numberOfLines = 2
         subheadingLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         view.addSubview(subheadingLabel)
         
-        scrollView.backgroundColor = .gray
-        view.addSubview(scrollView)
-        
-        filledButton.titleLabel?.text = "Create"
-        filledButton.titleLabel?.textColor = .white
+        filledButton.setTitle("Create Profile", for: .normal)
+        filledButton.setTitleColor(.white, for: .normal)
+        filledButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         filledButton.backgroundColor = .red
-        filledButton.layer.cornerRadius = 5.0
+        filledButton.layer.cornerRadius = Constants.UI.cornerRadius
         filledButton.clipsToBounds = true
         view.addSubview(filledButton)
     }
@@ -45,7 +47,7 @@ class MainViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         
-        // I am using frame setting bc that's what i'm used to working with. I know contstraints enough, yes.
+        // I am using frame setting bc that's what i'm used to working with.
         
         let appAreaInsets = view.window?.safeAreaInsets ?? UIEdgeInsets()
         
@@ -68,10 +70,10 @@ class MainViewController: UIViewController {
                                     width: view.bounds.width - 16,
                                     height: buttonSize.height)
         
-        scrollView.frame = CGRect(x: 8,
-                                  y: subheadingLabel.frame.maxY + 16 ,
-                                  width: view.bounds.width - 16 ,
-                                  height: (filledButton.frame.minY - subheadingLabel.frame.maxY) - 32 )
+        formViewController.view.frame = CGRect(x: 8,
+                                               y: subheadingLabel.frame.maxY + 16 ,
+                                               width: view.bounds.width - 16 ,
+                                               height: (filledButton.frame.minY - subheadingLabel.frame.maxY) - 32 )
         
     }
 }
