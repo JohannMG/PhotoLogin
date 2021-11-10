@@ -11,13 +11,13 @@ import UIKit
 
 class FormViewController: UIViewController {
     
-    let scrollView = UIScrollView()
+    private let scrollView = UIScrollView()
     
-    let addAvatar = UIView()
-    let firstNameField = UITextField()
-    let emailAddressField = UITextField()
-    let passwordField = UITextField()
-    let websiteField = UITextField()
+    private let addAvatar = UIView()
+    private let firstNameField = ProfileCreateTextField()
+    private let emailAddressField = ProfileCreateTextField()
+    private let passwordField = ProfileCreateTextField()
+    private let websiteField = ProfileCreateTextField()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,11 +9,11 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let titleLabel = UILabel()
-    let subheadingLabel = UILabel()
-    let filledButton = UIButton(type: .system)
+    private let titleLabel = UILabel()
+    private let subheadingLabel = UILabel()
+    private let filledButton = UIButton(type: .system)
     
-    let formViewController = FormViewController()
+    private let formViewController = FormViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,6 @@ class MainViewController: UIViewController {
         addChild(formViewController)
         view.addSubview(formViewController.view)
         formViewController.didMove(toParent: self)
-        formViewController.view.backgroundColor = .gray
         
         view.backgroundColor = .white
         

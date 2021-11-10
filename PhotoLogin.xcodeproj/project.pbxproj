@@ -17,6 +17,7 @@
 		2DBB4EB6273AE8EA0078DA50 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */; };
 		2DBB4EBA273B4FA30078DA50 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EB9273B4FA30078DA50 /* FormViewController.swift */; };
 		2DBB4EBE273B62460078DA50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EBD273B62460078DA50 /* Constants.swift */; };
+		2DBB4EC0273B637F0078DA50 /* ProfileCreateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EBF273B637F0078DA50 /* ProfileCreateTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2DBB4EB9273B4FA30078DA50 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		2DBB4EBD273B62460078DA50 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2DBB4EBF273B637F0078DA50 /* ProfileCreateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCreateTextField.swift; path = Views/ProfileCreateTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				2DBB4EBD273B62460078DA50 /* Constants.swift */,
 				2DBB4EB9273B4FA30078DA50 /* FormViewController.swift */,
 				2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */,
+				2DBB4EBF273B637F0078DA50 /* ProfileCreateTextField.swift */,
 				2DBB4E85273AE8020078DA50 /* AppDelegate.swift */,
 				2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */,
 				2DBB4E8E273AE8030078DA50 /* Assets.xcassets */,
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DBB4EBE273B62460078DA50 /* Constants.swift in Sources */,
+				2DBB4EC0273B637F0078DA50 /* ProfileCreateTextField.swift in Sources */,
 				2DBB4EB6273AE8EA0078DA50 /* MainViewController.swift in Sources */,
 				2DBB4E86273AE8020078DA50 /* AppDelegate.swift in Sources */,
 				2DBB4EBA273B4FA30078DA50 /* FormViewController.swift in Sources */,
