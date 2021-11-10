@@ -9,13 +9,12 @@
 /* Begin PBXBuildFile section */
 		2DBB4E86273AE8020078DA50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4E85273AE8020078DA50 /* AppDelegate.swift */; };
 		2DBB4E88273AE8020078DA50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */; };
-		2DBB4E8A273AE8020078DA50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4E89273AE8020078DA50 /* ViewController.swift */; };
-		2DBB4E8D273AE8020078DA50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBB4E8B273AE8020078DA50 /* Main.storyboard */; };
 		2DBB4E8F273AE8030078DA50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBB4E8E273AE8030078DA50 /* Assets.xcassets */; };
 		2DBB4E92273AE8030078DA50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBB4E90273AE8030078DA50 /* LaunchScreen.storyboard */; };
 		2DBB4E9D273AE8030078DA50 /* PhotoLoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4E9C273AE8030078DA50 /* PhotoLoginTests.swift */; };
 		2DBB4EA7273AE8030078DA50 /* PhotoLoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EA6273AE8030078DA50 /* PhotoLoginUITests.swift */; };
 		2DBB4EA9273AE8030078DA50 /* PhotoLoginUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EA8273AE8030078DA50 /* PhotoLoginUITestsLaunchTests.swift */; };
+		2DBB4EB6273AE8EA0078DA50 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +38,6 @@
 		2DBB4E82273AE8020078DA50 /* PhotoLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBB4E85273AE8020078DA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2DBB4E89273AE8020078DA50 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2DBB4E8C273AE8020078DA50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2DBB4E8E273AE8030078DA50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DBB4E91273AE8030078DA50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBB4E93273AE8030078DA50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +46,7 @@
 		2DBB4EA2273AE8030078DA50 /* PhotoLoginUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoLoginUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBB4EA6273AE8030078DA50 /* PhotoLoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoginUITests.swift; sourceTree = "<group>"; };
 		2DBB4EA8273AE8030078DA50 /* PhotoLoginUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoginUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +97,9 @@
 		2DBB4E84273AE8020078DA50 /* PhotoLogin */ = {
 			isa = PBXGroup;
 			children = (
+				2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */,
 				2DBB4E85273AE8020078DA50 /* AppDelegate.swift */,
 				2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */,
-				2DBB4E89273AE8020078DA50 /* ViewController.swift */,
-				2DBB4E8B273AE8020078DA50 /* Main.storyboard */,
 				2DBB4E8E273AE8030078DA50 /* Assets.xcassets */,
 				2DBB4E90273AE8030078DA50 /* LaunchScreen.storyboard */,
 				2DBB4E93273AE8030078DA50 /* Info.plist */,
@@ -233,7 +230,6 @@
 			files = (
 				2DBB4E92273AE8030078DA50 /* LaunchScreen.storyboard in Resources */,
 				2DBB4E8F273AE8030078DA50 /* Assets.xcassets in Resources */,
-				2DBB4E8D273AE8020078DA50 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DBB4E8A273AE8020078DA50 /* ViewController.swift in Sources */,
+				2DBB4EB6273AE8EA0078DA50 /* MainViewController.swift in Sources */,
 				2DBB4E86273AE8020078DA50 /* AppDelegate.swift in Sources */,
 				2DBB4E88273AE8020078DA50 /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2DBB4E8B273AE8020078DA50 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2DBB4E8C273AE8020078DA50 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2DBB4E90273AE8030078DA50 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -444,9 +432,10 @@
 				INFOPLIST_FILE = PhotoLogin/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -472,9 +461,10 @@
 				INFOPLIST_FILE = PhotoLogin/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
