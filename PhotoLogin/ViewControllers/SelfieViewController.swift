@@ -31,6 +31,7 @@ class SelfieViewController: UIViewController {
         
         view.addSubview(selfieView)
         selfieView.backgroundColor = .green
+        selfieView.clipsToBounds = true
         
         view.addSubview(buttonSnap)
         buttonSnap.backgroundColor = .white
@@ -74,7 +75,10 @@ extension SelfieViewController: SelfieCaptureDelegate {
             
             self.captureLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             self.selfieView.layer.addSublayer(self.captureLayer!)
-            self.captureLayer!.frame = self.selfieView.layer.frame
+            
+            // this is a hack for layout but I don't want to sink too much time here
+            let edge = max(self.selfieView.layer.frame.height, self.selfieView.layer.frame.width)
+            self.captureLayer!.frame = CGRect(x: -edge * 0.2 , y: 0, width: edge * 1.4, height: edge * 1.4)
             
         }
     }
