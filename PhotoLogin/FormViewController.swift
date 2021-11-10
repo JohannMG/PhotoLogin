@@ -18,6 +18,9 @@ class FormViewController: UIViewController {
     private let emailAddressField = ProfileCreateTextField()
     private let passwordField = ProfileCreateTextField()
     private let websiteField = ProfileCreateTextField()
+    
+    /// Keyboard and maybe button if we push it up too. Might want to do this another way
+//    var insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +55,7 @@ class FormViewController: UIViewController {
         // layout the image View
         let addAvatarSize = CGSize(width: 150, height: 150)
         addAvatar.frame = CGRect(x: scrollView.bounds.midX - (addAvatarSize.width / 2.0),
-                                 y: 0 ,
+                                 y: 0,
                                  width: addAvatarSize.width,
                                  height: addAvatarSize.height)
         
@@ -65,7 +68,6 @@ class FormViewController: UIViewController {
         
         
         scrollView.contentSize = CGSize(width: self.view.bounds.width, height: websiteField.frame.maxY + paddingY)
-        
     }
 
 }

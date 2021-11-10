@@ -15,6 +15,8 @@ class MainViewController: UIViewController {
     
     private let formViewController = FormViewController()
     
+    private var keyboardOffset = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +43,9 @@ class MainViewController: UIViewController {
         filledButton.layer.cornerRadius = Constants.UI.cornerRadius
         filledButton.clipsToBounds = true
         view.addSubview(filledButton)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification , object:nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification , object:nil)
     }
     
     
@@ -63,16 +68,30 @@ class MainViewController: UIViewController {
         
         // Bottom Up Layout ---
         
-        let buttonSize = CGSize(width: view.bounds.width, height: 45)
+        let buttonSize = CGSize(width: view.bounds.width, height: 45.0)
         filledButton.frame = CGRect(x: 8,
-                                    y: view.bounds.height - buttonSize.height - 16 - appAreaInsets.bottom ,
-                                    width: view.bounds.width - 16,
+                                    y: view.bounds.height - buttonSize.height - 16.0 - appAreaInsets.bottom,
+                                    width: view.bounds.width - 16.0,
                                     height: buttonSize.height)
         
+        let formHeight = (keyboardOffset == 0) ? (filledButton.frame.minY - subheadingLabel.frame.maxY) - 32.0
+                                            : (view.bounds.maxY - subheadingLabel.frame.maxY) - keyboardOffset
         formViewController.view.frame = CGRect(x: 8,
-                                               y: subheadingLabel.frame.maxY + 16 ,
-                                               width: view.bounds.width - 16 ,
-                                               height: (filledButton.frame.minY - subheadingLabel.frame.maxY) - 32 )
+                                               y: subheadingLabel.frame.maxY + 16.0 ,
+                                               width: view.bounds.width - 16.0,
+                                               height: formHeight)
         
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+       let keyboardHeight = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        keyboardOffset = keyboardHeight
+        view.setNeedsLayout()
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+       let keyboardHeight = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        keyboardOffset = 0.0
+        view.setNeedsLayout()
     }
 }
