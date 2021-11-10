@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     private let formViewController = FormViewController()
     
     private var keyboardOffset = 0.0
+    var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()

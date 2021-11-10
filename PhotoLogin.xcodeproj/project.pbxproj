@@ -23,6 +23,8 @@
 		2DBB4EC6273B76260078DA50 /* SelfieCaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EC5273B76260078DA50 /* SelfieCaptureSession.swift */; };
 		2DBB4EC8273B8F250078DA50 /* AvatarCaptureDisplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EC7273B8F250078DA50 /* AvatarCaptureDisplayButton.swift */; };
 		2DBB4ECA273B92110078DA50 /* ImageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */; };
+		2DBB4ECC273B95470078DA50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4ECB273B95470078DA50 /* User.swift */; };
+		2DBB4ECE273C3C2F0078DA50 /* ProfileCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4ECD273C3C2F0078DA50 /* ProfileCardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		2DBB4EC5273B76260078DA50 /* SelfieCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieCaptureSession.swift; sourceTree = "<group>"; };
 		2DBB4EC7273B8F250078DA50 /* AvatarCaptureDisplayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCaptureDisplayButton.swift; sourceTree = "<group>"; };
 		2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelpers.swift; sourceTree = "<group>"; };
+		2DBB4ECB273B95470078DA50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		2DBB4ECD273C3C2F0078DA50 /* ProfileCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCardViewController.swift; path = ViewControllers/ProfileCardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +123,12 @@
 				2DBB4EBD273B62460078DA50 /* Constants.swift */,
 				2DBB4EB9273B4FA30078DA50 /* FormViewController.swift */,
 				2DBB4EC1273B6A040078DA50 /* SelfieViewController.swift */,
+				2DBB4ECD273C3C2F0078DA50 /* ProfileCardViewController.swift */,
 				2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */,
 				2DBB4EBF273B637F0078DA50 /* ProfileCreateTextField.swift */,
 				2DBB4E85273AE8020078DA50 /* AppDelegate.swift */,
 				2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */,
+				2DBB4ECB273B95470078DA50 /* User.swift */,
 				2DBB4E8E273AE8030078DA50 /* Assets.xcassets */,
 				2DBB4E90273AE8030078DA50 /* LaunchScreen.storyboard */,
 				2DBB4E93273AE8030078DA50 /* Info.plist */,
@@ -283,9 +289,11 @@
 				2DBB4ECA273B92110078DA50 /* ImageHelpers.swift in Sources */,
 				2DBB4EC0273B637F0078DA50 /* ProfileCreateTextField.swift in Sources */,
 				2DBB4EC2273B6A040078DA50 /* SelfieViewController.swift in Sources */,
+				2DBB4ECE273C3C2F0078DA50 /* ProfileCardViewController.swift in Sources */,
 				2DBB4EB6273AE8EA0078DA50 /* MainViewController.swift in Sources */,
 				2DBB4EC6273B76260078DA50 /* SelfieCaptureSession.swift in Sources */,
 				2DBB4E86273AE8020078DA50 /* AppDelegate.swift in Sources */,
+				2DBB4ECC273B95470078DA50 /* User.swift in Sources */,
 				2DBB4EBA273B4FA30078DA50 /* FormViewController.swift in Sources */,
 				2DBB4EC8273B8F250078DA50 /* AvatarCaptureDisplayButton.swift in Sources */,
 				2DBB4E88273AE8020078DA50 /* SceneDelegate.swift in Sources */,

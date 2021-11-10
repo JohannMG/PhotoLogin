@@ -12,6 +12,7 @@ public struct Constants {
     
     public struct UI {
         static let cornerRadius: CGFloat = 5.0
+        static let avatarSize = CGSize(width: 150, height: 150)
     }
     
 }

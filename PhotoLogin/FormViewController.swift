@@ -59,7 +59,7 @@ class FormViewController: UIViewController {
         let paddingY: CGFloat = 16.0
         
         // layout the image View
-        let addAvatarSize = CGSize(width: 150, height: 150)
+        let addAvatarSize = Constants.UI.avatarSize
         addAvatar.frame = CGRect(x: scrollView.bounds.midX - (addAvatarSize.width / 2.0),
                                  y: 0,
                                  width: addAvatarSize.width,
