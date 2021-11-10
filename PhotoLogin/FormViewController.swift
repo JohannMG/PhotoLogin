@@ -7,17 +7,22 @@
 
 import UIKit
 
-// TODO:  - add a delegate to signal if form is ready or not based on required fields
+protocol FormViewDelegate : AnyObject
+{
+    // TODO: func formValidityChanged(_ valid: Bool) -> Void
+}
 
 class FormViewController: UIViewController {
     
     private let scrollView = UIScrollView()
     
-    private let addAvatar = UIView()
+    private let addAvatar = UIControl()
     private let firstNameField = ProfileCreateTextField()
     private let emailAddressField = ProfileCreateTextField()
     private let passwordField = ProfileCreateTextField()
     private let websiteField = ProfileCreateTextField()
+    
+    private lazy var selfieVC: SelfieViewController = { SelfieViewController() }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,7 @@ class FormViewController: UIViewController {
         
         // Imageview will have more to it soon
         addAvatar.backgroundColor = .lightGray
+        addAvatar.addTarget(self, action: #selector(didTapAddImage), for: .touchUpInside)
         scrollView.addSubview(addAvatar)
         
         // Then setup items that go into the scrollview
@@ -47,6 +53,7 @@ class FormViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         scrollView.frame = view.bounds
         
         let paddingY: CGFloat = 16.0
@@ -68,7 +75,32 @@ class FormViewController: UIViewController {
         
         scrollView.contentSize = CGSize(width: self.view.bounds.width, height: websiteField.frame.maxY + paddingY)
     }
+    
+    @objc
+    func didTapAddImage(){
+        AVPermissions.getPermissionAsyncOnSuccess {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.selfieVC.delegate = self
+                self.present(self.selfieVC, animated: true, completion: nil)
+            }
+        } onFailure: {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Permissions",
+                                              message: "Camera permissions have been blocked. Go to settings and add permissions",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
 
+    }
+}
+
+extension FormViewController : SelfieViewDelegate {
+    func didTakeImage(_ image: UIImage) {
+        print ("Got in image")
+    }
 }
 
 extension FormViewController: UITextFieldDelegate {

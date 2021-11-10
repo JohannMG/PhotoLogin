@@ -50,6 +50,7 @@ class MainViewController: UIViewController {
     
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         
         // I am using frame setting bc that's what i'm used to working with.
         
