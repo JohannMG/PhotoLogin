@@ -18,9 +18,6 @@ class FormViewController: UIViewController {
     private let emailAddressField = ProfileCreateTextField()
     private let passwordField = ProfileCreateTextField()
     private let websiteField = ProfileCreateTextField()
-    
-    /// Keyboard and maybe button if we push it up too. Might want to do this another way
-//    var insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
