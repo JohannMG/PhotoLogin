@@ -38,9 +38,8 @@ class SelfieViewController: UIViewController {
         buttonSnap.layer.borderWidth = 8.0
         buttonSnap.layer.borderColor = UIColor.gray.cgColor
         buttonSnap.layer.cornerRadius = buttonSize.width / 2.0
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        buttonSnap.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
+        
         selfieCaptureSession.delegate = self
         selfieCaptureSession.setup()
     }
@@ -59,7 +58,7 @@ class SelfieViewController: UIViewController {
     
     @objc
     func takePhoto() {
-        print("Click")
+        selfieCaptureSession.takePhoto()
     }
 
 }
@@ -81,5 +80,11 @@ extension SelfieViewController: SelfieCaptureDelegate {
             self.captureLayer!.frame = CGRect(x: -edge * 0.2 , y: 0, width: edge * 1.4, height: edge * 1.4)
             
         }
+    }
+    
+    func sessionReturnedImage(_ image: CGImage) {
+        self.dismiss(animated: true, completion: nil)
+        let friendlyImage = ImageHelpers.prepareSelfieToSquare(image)
+        delegate?.didTakeImage(friendlyImage)
     }
 }

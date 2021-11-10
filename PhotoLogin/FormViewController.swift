@@ -16,7 +16,7 @@ class FormViewController: UIViewController {
     
     private let scrollView = UIScrollView()
     
-    private let addAvatar = UIControl()
+    private let addAvatar = AvatarCaptureDisplayButton()
     private let firstNameField = ProfileCreateTextField()
     private let emailAddressField = ProfileCreateTextField()
     private let passwordField = ProfileCreateTextField()
@@ -99,7 +99,7 @@ class FormViewController: UIViewController {
 
 extension FormViewController : SelfieViewDelegate {
     func didTakeImage(_ image: UIImage) {
-        print ("Got in image")
+        addAvatar.imageView.image = image
     }
 }
 

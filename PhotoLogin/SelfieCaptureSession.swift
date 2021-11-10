@@ -8,19 +8,23 @@
 
 import Foundation
 import AVFoundation
+import UIKit
 
 protocol SelfieCaptureDelegate: AnyObject {
     
     /// Called when capture session ready to be attached to a Layer
     /// NOT guranteed to be on main queue
     func sessionReadyForLayer()
+    
+    func sessionReturnedImage(_ image: CGImage)
 }
 
-class SelfieCaptureSession {
+class SelfieCaptureSession: NSObject {
     
     var captureSession: AVCaptureSession?
     var camera: AVCaptureDevice?
     var input: AVCaptureInput?
+    var photoOutput = AVCapturePhotoOutput()
     
     weak var delegate: SelfieCaptureDelegate?
     
@@ -45,6 +49,7 @@ class SelfieCaptureSession {
             }
             
             self.inputsSetup()
+            self.outputsSetup()
             
             captureSession.commitConfiguration()
             captureSession.startRunning()
@@ -77,4 +82,40 @@ class SelfieCaptureSession {
         captureSession.addInput(input)
     }
     
+    private func outputsSetup() {
+        guard let captureSession = captureSession else {
+            fatalError("Capture session is null in inputsSetup and shouldn't be")
+        }
+        
+        if captureSession.canAddOutput(photoOutput) {
+            captureSession.addOutput(photoOutput)
+        } else {
+            fatalError("Could not add photo output")
+        }
+        
+    }
+    
+    func takePhoto() {
+        let captureSettings = AVCapturePhotoSettings()
+        captureSettings.previewPhotoFormat = [
+            kCVPixelBufferPixelFormatTypeKey as String : captureSettings.availablePreviewPhotoPixelFormatTypes.first!,
+            kCVPixelBufferWidthKey as String: 300,
+            kCVPixelBufferHeightKey as String: 300
+        ]
+        photoOutput.capturePhoto(with: captureSettings, delegate: self)
+    }
+    
+}
+
+extension SelfieCaptureSession: AVCapturePhotoCaptureDelegate {
+    
+    func photoOutput(_ output: AVCapturePhotoOutput,
+                     didFinishProcessingPhoto photo: AVCapturePhoto,
+                     error: Error?) {
+        
+        guard let cgImageFromOutput = photo.cgImageRepresentation() else {
+            fatalError("Could not turn pixelbuffer into CGPhoto")
+        }
+        delegate?.sessionReturnedImage(cgImageFromOutput)
+    }
 }
