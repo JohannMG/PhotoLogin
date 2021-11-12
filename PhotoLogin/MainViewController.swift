@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
         addChild(formViewController)
         view.addSubview(formViewController.view)
         formViewController.didMove(toParent: self)
+        formViewController.delegate = self
         
         view.backgroundColor = .white
         
@@ -42,10 +43,11 @@ class MainViewController: UIViewController {
         filledButton.setTitle("Create Profile", for: .normal)
         filledButton.setTitleColor(.white, for: .normal)
         filledButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
-        filledButton.backgroundColor = .red
+        filledButton.backgroundColor = .darkGray
         filledButton.layer.cornerRadius = Constants.UI.cornerRadius
         filledButton.clipsToBounds = true
         filledButton.addTarget(self, action: #selector(didSubmit), for: .touchUpInside)
+        filledButton.isEnabled = false
         view.addSubview(filledButton)
         
         addChild(profileCardViewController)
@@ -124,4 +126,16 @@ class MainViewController: UIViewController {
         
     }
     
+}
+
+extension MainViewController : FormViewDelegate {
+    func formValidityChanged(_ valid: Bool) {
+        filledButton.isEnabled = valid
+        
+        if valid {
+            filledButton.backgroundColor = .red
+        } else {
+            filledButton.backgroundColor = .darkGray
+        }
+    }
 }

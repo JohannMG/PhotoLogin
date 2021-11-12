@@ -9,10 +9,12 @@ import UIKit
 
 protocol FormViewDelegate : AnyObject
 {
-    // TODO: func formValidityChanged(_ valid: Bool) -> Void
+    func formValidityChanged(_ valid: Bool)
 }
 
 class FormViewController: UIViewController {
+    
+    var delegate: FormViewDelegate?
     
     private let scrollView = UIScrollView()
     
@@ -21,6 +23,7 @@ class FormViewController: UIViewController {
     private let emailAddressField = ProfileCreateTextField()
     private let passwordField = ProfileCreateTextField()
     private let websiteField = ProfileCreateTextField()
+    private var isFormValid = false
     
     private lazy var selfieVC: SelfieViewController = { SelfieViewController() }()
 
@@ -42,6 +45,7 @@ class FormViewController: UIViewController {
             field.layer.borderColor = CGColor(gray: 0.0, alpha: 1.0)
             field.layer.borderWidth = 1.0
             field.layer.cornerRadius = Constants.UI.cornerRadius
+            field.delegate = self
             scrollView.addSubview(field)
         }
         firstNameField.placeholder = "First Name"
@@ -117,11 +121,43 @@ extension FormViewController : SelfieViewDelegate {
 
 extension FormViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        updateValidState()
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         view.endEditing(true)
+        updateValidState()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
+        updateValidState()
+        return false
+    }
+    
+    private func updateValidState() {
+        let newState = checkFormIsValid()
+        if isFormValid != newState {
+            delegate?.formValidityChanged(newState)
+        }
+        
+        isFormValid = newState
+    }
+}
+
+// Form Valildity
+extension FormViewController {
+    func checkFormIsValid() -> Bool {
+        // Let's keep it simple
+        // Name, email can be any length greater than zero
+        let emailValid = (emailAddressField.text?.count ?? 0) >= 3
+        let userValid = (firstNameField.text?.count ?? 0) >= 1
+        
+        // Password, must be at least 8 characters
+        let passValid = (passwordField.text?.count ?? 0) >= 8
+        
+        return emailValid && userValid && passValid
     }
 }
