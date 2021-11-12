@@ -1,5 +1,5 @@
 //
-//  ErrorHandling.swift
+//  CaptureError.swift
 //  PhotoLogin
 //
 //  Created by Johann Garces on 11/11/21.

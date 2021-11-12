@@ -25,7 +25,7 @@
 		2DBB4ECA273B92110078DA50 /* ImageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */; };
 		2DBB4ECC273B95470078DA50 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4ECB273B95470078DA50 /* User.swift */; };
 		2DBB4ECE273C3C2F0078DA50 /* ProfileCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBB4ECD273C3C2F0078DA50 /* ProfileCardViewController.swift */; };
-		2DD9164E273E0C15004741B0 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD9164D273E0C15004741B0 /* ErrorHandling.swift */; };
+		2DD9164E273E0C15004741B0 /* CaptureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD9164D273E0C15004741B0 /* CaptureError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +47,8 @@
 
 /* Begin PBXFileReference section */
 		2DBB4E82273AE8020078DA50 /* PhotoLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DBB4E85273AE8020078DA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		2DBB4E85273AE8020078DA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = AppShared/AppDelegate.swift; sourceTree = "<group>"; };
+		2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = AppShared/SceneDelegate.swift; sourceTree = "<group>"; };
 		2DBB4E8E273AE8030078DA50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DBB4E91273AE8030078DA50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBB4E93273AE8030078DA50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,18 +57,18 @@
 		2DBB4EA2273AE8030078DA50 /* PhotoLoginUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoLoginUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBB4EA6273AE8030078DA50 /* PhotoLoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoginUITests.swift; sourceTree = "<group>"; };
 		2DBB4EA8273AE8030078DA50 /* PhotoLoginUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoginUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		2DBB4EB9273B4FA30078DA50 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
-		2DBB4EBD273B62460078DA50 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewControllers/MainViewController.swift; sourceTree = "<group>"; };
+		2DBB4EB9273B4FA30078DA50 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FormViewController.swift; path = ViewControllers/FormViewController.swift; sourceTree = "<group>"; };
+		2DBB4EBD273B62460078DA50 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = AppShared/Constants.swift; sourceTree = "<group>"; };
 		2DBB4EBF273B637F0078DA50 /* ProfileCreateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCreateTextField.swift; path = Views/ProfileCreateTextField.swift; sourceTree = "<group>"; };
 		2DBB4EC1273B6A040078DA50 /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfieViewController.swift; path = ViewControllers/SelfieViewController.swift; sourceTree = "<group>"; };
-		2DBB4EC3273B6FCC0078DA50 /* AVPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPermissions.swift; sourceTree = "<group>"; };
-		2DBB4EC5273B76260078DA50 /* SelfieCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieCaptureSession.swift; sourceTree = "<group>"; };
-		2DBB4EC7273B8F250078DA50 /* AvatarCaptureDisplayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCaptureDisplayButton.swift; sourceTree = "<group>"; };
-		2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelpers.swift; sourceTree = "<group>"; };
+		2DBB4EC3273B6FCC0078DA50 /* AVPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AVPermissions.swift; path = Imaging/AVPermissions.swift; sourceTree = "<group>"; };
+		2DBB4EC5273B76260078DA50 /* SelfieCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelfieCaptureSession.swift; path = Imaging/SelfieCaptureSession.swift; sourceTree = "<group>"; };
+		2DBB4EC7273B8F250078DA50 /* AvatarCaptureDisplayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarCaptureDisplayButton.swift; path = Views/AvatarCaptureDisplayButton.swift; sourceTree = "<group>"; };
+		2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageHelpers.swift; path = Imaging/ImageHelpers.swift; sourceTree = "<group>"; };
 		2DBB4ECB273B95470078DA50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		2DBB4ECD273C3C2F0078DA50 /* ProfileCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCardViewController.swift; path = ViewControllers/ProfileCardViewController.swift; sourceTree = "<group>"; };
-		2DD9164D273E0C15004741B0 /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
+		2DD9164D273E0C15004741B0 /* CaptureError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CaptureError.swift; path = Imaging/CaptureError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,23 +119,14 @@
 		2DBB4E84273AE8020078DA50 /* PhotoLogin */ = {
 			isa = PBXGroup;
 			children = (
-				2DD9164D273E0C15004741B0 /* ErrorHandling.swift */,
-				2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */,
-				2DBB4EC5273B76260078DA50 /* SelfieCaptureSession.swift */,
-				2DBB4EC7273B8F250078DA50 /* AvatarCaptureDisplayButton.swift */,
-				2DBB4EBD273B62460078DA50 /* Constants.swift */,
-				2DBB4EB9273B4FA30078DA50 /* FormViewController.swift */,
-				2DBB4EC1273B6A040078DA50 /* SelfieViewController.swift */,
-				2DBB4ECD273C3C2F0078DA50 /* ProfileCardViewController.swift */,
-				2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */,
-				2DBB4EBF273B637F0078DA50 /* ProfileCreateTextField.swift */,
-				2DBB4E85273AE8020078DA50 /* AppDelegate.swift */,
-				2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */,
-				2DBB4ECB273B95470078DA50 /* User.swift */,
+				2DE9DE1B273EE46C0091CAFC /* ViewControllers */,
+				2DE9DE1C273EE4870091CAFC /* Imaging */,
+				2DE9DE1E273EE4C90091CAFC /* Views */,
+				2DE9DE1F273EE4D60091CAFC /* AppShared */,
+				2DE9DE1D273EE4A10091CAFC /* Models */,
 				2DBB4E8E273AE8030078DA50 /* Assets.xcassets */,
 				2DBB4E90273AE8030078DA50 /* LaunchScreen.storyboard */,
 				2DBB4E93273AE8030078DA50 /* Info.plist */,
-				2DBB4EC3273B6FCC0078DA50 /* AVPermissions.swift */,
 			);
 			path = PhotoLogin;
 			sourceTree = "<group>";
@@ -155,6 +146,55 @@
 				2DBB4EA8273AE8030078DA50 /* PhotoLoginUITestsLaunchTests.swift */,
 			);
 			path = PhotoLoginUITests;
+			sourceTree = "<group>";
+		};
+		2DE9DE1B273EE46C0091CAFC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2DBB4EB9273B4FA30078DA50 /* FormViewController.swift */,
+				2DBB4EC1273B6A040078DA50 /* SelfieViewController.swift */,
+				2DBB4ECD273C3C2F0078DA50 /* ProfileCardViewController.swift */,
+				2DBB4EB5273AE8EA0078DA50 /* MainViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2DE9DE1C273EE4870091CAFC /* Imaging */ = {
+			isa = PBXGroup;
+			children = (
+				2DBB4EC3273B6FCC0078DA50 /* AVPermissions.swift */,
+				2DD9164D273E0C15004741B0 /* CaptureError.swift */,
+				2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */,
+				2DBB4EC5273B76260078DA50 /* SelfieCaptureSession.swift */,
+			);
+			name = Imaging;
+			sourceTree = "<group>";
+		};
+		2DE9DE1D273EE4A10091CAFC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2DBB4ECB273B95470078DA50 /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		2DE9DE1E273EE4C90091CAFC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2DBB4EC7273B8F250078DA50 /* AvatarCaptureDisplayButton.swift */,
+				2DBB4EBF273B637F0078DA50 /* ProfileCreateTextField.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2DE9DE1F273EE4D60091CAFC /* AppShared */ = {
+			isa = PBXGroup;
+			children = (
+				2DBB4EBD273B62460078DA50 /* Constants.swift */,
+				2DBB4E85273AE8020078DA50 /* AppDelegate.swift */,
+				2DBB4E87273AE8020078DA50 /* SceneDelegate.swift */,
+			);
+			name = AppShared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +336,7 @@
 				2DBB4EB6273AE8EA0078DA50 /* MainViewController.swift in Sources */,
 				2DBB4EC6273B76260078DA50 /* SelfieCaptureSession.swift in Sources */,
 				2DBB4E86273AE8020078DA50 /* AppDelegate.swift in Sources */,
-				2DD9164E273E0C15004741B0 /* ErrorHandling.swift in Sources */,
+				2DD9164E273E0C15004741B0 /* CaptureError.swift in Sources */,
 				2DBB4ECC273B95470078DA50 /* User.swift in Sources */,
 				2DBB4EBA273B4FA30078DA50 /* FormViewController.swift in Sources */,
 				2DBB4EC8273B8F250078DA50 /* AvatarCaptureDisplayButton.swift in Sources */,
