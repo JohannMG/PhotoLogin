@@ -68,7 +68,7 @@
 		2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelpers.swift; sourceTree = "<group>"; };
 		2DBB4ECB273B95470078DA50 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		2DBB4ECD273C3C2F0078DA50 /* ProfileCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileCardViewController.swift; path = ViewControllers/ProfileCardViewController.swift; sourceTree = "<group>"; };
-		2DD9164D273E0C15004741B0 /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ErrorHandling.swift; path = PhotoLogin/ErrorHandling.swift; sourceTree = "<group>"; };
+		2DD9164D273E0C15004741B0 /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,6 @@
 		2DBB4E79273AE8020078DA50 = {
 			isa = PBXGroup;
 			children = (
-				2DD9164D273E0C15004741B0 /* ErrorHandling.swift */,
 				2DBB4E84273AE8020078DA50 /* PhotoLogin */,
 				2DBB4E9B273AE8030078DA50 /* PhotoLoginTests */,
 				2DBB4EA5273AE8030078DA50 /* PhotoLoginUITests */,
@@ -120,6 +119,7 @@
 		2DBB4E84273AE8020078DA50 /* PhotoLogin */ = {
 			isa = PBXGroup;
 			children = (
+				2DD9164D273E0C15004741B0 /* ErrorHandling.swift */,
 				2DBB4EC9273B92110078DA50 /* ImageHelpers.swift */,
 				2DBB4EC5273B76260078DA50 /* SelfieCaptureSession.swift */,
 				2DBB4EC7273B8F250078DA50 /* AvatarCaptureDisplayButton.swift */,
