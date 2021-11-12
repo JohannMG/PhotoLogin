@@ -10,7 +10,7 @@ import UIKit
 class ProfileCardViewController: UIViewController {
     
     let profileImageView = UIImageView()
-    let websiteLabel = UITextView()
+    let websiteLabel = UILabel()
     let nameLabel = UILabel()
     let emailLabel = UILabel()
     
@@ -25,9 +25,11 @@ class ProfileCardViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        profileImageView.clipsToBounds = true
+        profileImageView.contentMode = .scaleAspectFill
         view.addSubview(profileImageView)
         
-        websiteLabel.isEditable = false
+        websiteLabel.numberOfLines = 1
         websiteLabel.isUserInteractionEnabled = true
         websiteLabel.textAlignment = .center
         view.addSubview(websiteLabel)
@@ -44,8 +46,15 @@ class ProfileCardViewController: UIViewController {
     private func updateInformation() {
         profileImageView.image = user?.userProfileImage
         
-        // TODO: Attributed string link
-        websiteLabel.text = user?.website ?? ""
+        
+        let link = user?.website ?? ""
+        if let linkAsUrl = URL(string: link) {
+            let linkString = NSMutableAttributedString(string: link)
+            linkString.addAttribute(.link, value: linkAsUrl as Any, range: NSRange(location: 0, length: linkString.length))
+            websiteLabel.attributedText = linkString
+        } else {
+            websiteLabel.text = link
+        }
         
         nameLabel.text = user?.name ?? ""
         emailLabel.text = user?.email ?? ""
