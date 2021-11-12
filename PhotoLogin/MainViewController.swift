@@ -34,7 +34,8 @@ class MainViewController: UIViewController {
 
         
         subheadingLabel.text = "User the form below to submit your portfolio. \nAn email and password are required."
-        subheadingLabel.numberOfLines = 2
+        subheadingLabel.numberOfLines = -1
+        subheadingLabel.lineBreakMode = .byWordWrapping
         subheadingLabel.font = UIFont.systemFont(ofSize: 16, weight: .light)
         view.addSubview(subheadingLabel)
         
@@ -67,11 +68,11 @@ class MainViewController: UIViewController {
         let titleSize = titleLabel.intrinsicContentSize
         titleLabel.frame = CGRect(x: 8, y: 8 + appAreaInsets.top, width: view.bounds.width - 16, height: titleSize.height)
         
-        let subSize = subheadingLabel.intrinsicContentSize
+        let subheadSize = subheadingLabel.sizeThatFits(CGSize(width: view.bounds.width, height: 9999))
         subheadingLabel.frame = CGRect(x: 8,
                                        y: titleLabel.frame.maxY + 8 ,
                                        width: view.bounds.width - 16 ,
-                                       height: subSize.height)
+                                       height: subheadSize.height)
         
         // Bottom Up Layout ---
         
