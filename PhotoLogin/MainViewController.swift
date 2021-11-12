@@ -59,7 +59,7 @@ class MainViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        // I am using frame setting bc that's what i'm used to working with.
+        // I am using frame setting bc that's what I'm used to working with.
         
         let appAreaInsets = view.window?.safeAreaInsets ?? UIEdgeInsets()
         

@@ -16,6 +16,9 @@ protocol SelfieCaptureDelegate: AnyObject {
     /// NOT guranteed to be on main queue
     func sessionReadyForLayer()
     
+    /// Called on the main queue since this is a User Action Item
+    func sessionFailed(error: Error)
+    
     func sessionReturnedImage(_ image: CGImage)
 }
 
@@ -62,21 +65,25 @@ class SelfieCaptureSession: NSObject {
     private func inputsSetup() {
         
         guard let captureSession = captureSession else {
-            fatalError("Capture session is null in inputsSetup and shouldn't be")
+            delegate?.sessionFailed(error: CaptureError.captureSessionMissing)
+            return
         }
         
         guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {
-            fatalError("Camera doesn't exist, oh no.")
+            delegate?.sessionFailed(error: CaptureError.noCamera)
+            return
         }
         self.camera = device
         
         guard let input = try? AVCaptureDeviceInput(device: device) else {
-            fatalError("Error getting camera input")
+            delegate?.sessionFailed(error: CaptureError.captureInput)
+            return
         }
         self.input = input
 
         if !captureSession.canAddInput(input) {
-            fatalError("Couldn't attach a camera")
+            delegate?.sessionFailed(error: CaptureError.cameraError)
+            return
         }
         
         captureSession.addInput(input)
@@ -84,13 +91,15 @@ class SelfieCaptureSession: NSObject {
     
     private func outputsSetup() {
         guard let captureSession = captureSession else {
-            fatalError("Capture session is null in inputsSetup and shouldn't be")
+            delegate?.sessionFailed(error: CaptureError.captureSessionMissing)
+            return
         }
         
         if captureSession.canAddOutput(photoOutput) {
             captureSession.addOutput(photoOutput)
         } else {
-            fatalError("Could not add photo output")
+            delegate?.sessionFailed(error: CaptureError.photoOutput)
+            return
         }
         
     }
@@ -114,7 +123,8 @@ extension SelfieCaptureSession: AVCapturePhotoCaptureDelegate {
                      error: Error?) {
         
         guard let cgImageFromOutput = photo.cgImageRepresentation() else {
-            fatalError("Could not turn pixelbuffer into CGPhoto")
+            delegate?.sessionFailed(error: CaptureError.photoParse)
+            return
         }
         delegate?.sessionReturnedImage(cgImageFromOutput)
     }

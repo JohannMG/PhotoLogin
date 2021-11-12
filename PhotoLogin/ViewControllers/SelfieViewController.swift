@@ -64,6 +64,13 @@ class SelfieViewController: UIViewController {
 }
 
 extension SelfieViewController: SelfieCaptureDelegate {
+    
+    func sessionFailed(error: Error) {
+        let alert = UIAlertController(title: "Camera Error", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     func sessionReadyForLayer() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
