@@ -61,7 +61,6 @@ class SelfieCaptureSession: NSObject {
         }
     }
     
-    /// Todo - better error management
     private func inputsSetup() {
         
         guard let captureSession = captureSession else {
