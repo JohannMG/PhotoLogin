@@ -17,6 +17,7 @@ class SelfieViewController: UIViewController {
     
     private let selfieView = UIView()
     private let buttonSnap = UIControl()
+    private let buttonCancel = UIButton(type: .system)
     private lazy var selfieCaptureSession = { SelfieCaptureSession() }()
     private var captureLayer: AVCaptureVideoPreviewLayer?
     
@@ -30,7 +31,7 @@ class SelfieViewController: UIViewController {
         view.backgroundColor = .black
         
         view.addSubview(selfieView)
-        selfieView.backgroundColor = .green
+        selfieView.backgroundColor = .gray
         selfieView.clipsToBounds = true
         
         view.addSubview(buttonSnap)
@@ -39,6 +40,11 @@ class SelfieViewController: UIViewController {
         buttonSnap.layer.borderColor = UIColor.gray.cgColor
         buttonSnap.layer.cornerRadius = buttonSize.width / 2.0
         buttonSnap.addTarget(self, action: #selector(takePhoto), for: .touchUpInside)
+        
+        view.addSubview(buttonCancel)
+        buttonCancel.setTitle("Cancel", for: .normal)
+        buttonCancel.setTitleColor(.yellow, for: .normal)
+        buttonCancel.addTarget(self, action: #selector(closeButton), for: .touchUpInside)
         
         selfieCaptureSession.delegate = self
         selfieCaptureSession.setup()
@@ -54,11 +60,22 @@ class SelfieViewController: UIViewController {
                                   y: view.bounds.maxY - 200,
                                   width: buttonSize.width,
                                   height: buttonSize.height)
+        
+        let buttonSize = buttonCancel.intrinsicContentSize
+        buttonCancel.frame = CGRect(x: 50,
+                                    y: buttonSnap.frame.midY - (buttonSize.height / 2.0),
+                                    width: buttonSize.width,
+                                    height: buttonSize.height)
     }
     
     @objc
     func takePhoto() {
         selfieCaptureSession.takePhoto()
+    }
+    
+    @objc
+    func closeButton() {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
