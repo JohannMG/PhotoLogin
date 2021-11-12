@@ -46,7 +46,9 @@ class FormViewController: UIViewController {
         }
         firstNameField.placeholder = "First Name"
         emailAddressField.placeholder = "Email"
+        emailAddressField.autocapitalizationType = .none
         passwordField.placeholder = "Password"
+        passwordField.autocorrectionType = .no
         passwordField.isSecureTextEntry = true
         websiteField.placeholder = "Website"
         
@@ -94,6 +96,16 @@ class FormViewController: UIViewController {
             }
         }
 
+    }
+    
+    func createUserFromForm() -> User {
+        let user = User()
+        user.userProfileImage = addAvatar.imageView.image
+        user.name = firstNameField.text
+        user.email = emailAddressField.text
+        user.password = passwordField.text
+        user.website = websiteField.text
+        return user
     }
 }
 

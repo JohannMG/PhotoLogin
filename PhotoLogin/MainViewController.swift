@@ -14,9 +14,10 @@ class MainViewController: UIViewController {
     private let filledButton = UIButton(type: .system)
     
     private let formViewController = FormViewController()
+    private let profileCardViewController = ProfileCardViewController()
     
     private var keyboardOffset = 0.0
-    var user = User()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,11 @@ class MainViewController: UIViewController {
         filledButton.backgroundColor = .red
         filledButton.layer.cornerRadius = Constants.UI.cornerRadius
         filledButton.clipsToBounds = true
+        filledButton.addTarget(self, action: #selector(didSubmit), for: .touchUpInside)
         view.addSubview(filledButton)
+        
+        addChild(profileCardViewController)
+        // only add subview when showing
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification , object:nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification , object:nil)
@@ -76,12 +81,14 @@ class MainViewController: UIViewController {
                                     width: view.bounds.width - 16.0,
                                     height: buttonSize.height)
         
+        
         let formHeight = (keyboardOffset == 0) ? (filledButton.frame.minY - subheadingLabel.frame.maxY) - 32.0
                                             : (view.bounds.maxY - subheadingLabel.frame.maxY) - keyboardOffset
         formViewController.view.frame = CGRect(x: 8,
                                                y: subheadingLabel.frame.maxY + 16.0 ,
                                                width: view.bounds.width - 16.0,
                                                height: formHeight)
+        profileCardViewController.view.frame = formViewController.view.frame
         
     }
     
@@ -92,8 +99,28 @@ class MainViewController: UIViewController {
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-       let keyboardHeight = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+//       let keyboardHeight = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
         keyboardOffset = 0.0
         view.setNeedsLayout()
     }
+    
+    @objc
+    func didSubmit() {
+        self.user = formViewController.createUserFromForm()
+        profileCardViewController.user = self.user
+        
+        titleLabel.text = "Hello, \(self.user?.name ?? "")"
+        subheadingLabel.text = "Your super-awesome portfolio has been successfully submmitted! The preview below is what the community will see!"
+        
+        formViewController.view.removeFromSuperview()
+        formViewController.removeFromParent()
+        
+        self.view.addSubview(profileCardViewController.view)
+        profileCardViewController.didMove(toParent: self)
+        
+        filledButton.isHidden = true
+        
+        
+    }
+    
 }

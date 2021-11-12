@@ -60,10 +60,14 @@ class ProfileCardViewController: UIViewController {
         // Top down, H centered
         
         let avatarSize = Constants.UI.avatarSize
-        profileImageView.frame = CGRect(x: view.bounds.midX - (avatarSize.width / 2.0) ,
-                                        y: 0,
-                                        width: avatarSize.width,
-                                        height: avatarSize.height)
+        if profileImageView.image == nil {
+            profileImageView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        } else {
+            profileImageView.frame = CGRect(x: view.bounds.midX - (avatarSize.width / 2.0) ,
+                                            y: 0,
+                                            width: avatarSize.width,
+                                            height: avatarSize.height)
+        }
         
         websiteLabel.frame = CGRect(x: 0,
                                     y: profileImageView.frame.maxY + yPadding,
