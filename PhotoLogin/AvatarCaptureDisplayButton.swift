@@ -8,7 +8,8 @@
 import UIKit
 
 class AvatarCaptureDisplayButton: UIControl {
-
+    
+    var label = UILabel()
     var imageView = UIImageView()
     
     override init(frame: CGRect) {
@@ -22,14 +23,23 @@ class AvatarCaptureDisplayButton: UIControl {
     }
     
     func sharedInit() {
+        label.numberOfLines = 0
+        label.text = "Touch to add avatar"
+        label.textAlignment = .center
+        addSubview(label)
+        
         addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         clipsToBounds = true
+        
+        layer.cornerRadius = Constants.UI.cornerRadius
+        self.clipsToBounds = true
     }
     
     override func layoutSubviews() {
         imageView.frame = self.bounds
+        label.frame = self.bounds
     }
 
 }
